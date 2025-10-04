@@ -1,7 +1,6 @@
 # config/api_config.py
 import os
 from dotenv import load_dotenv
-
 load_dotenv()
 
 OPENAQ_BASE = "https://api.openaq.org/v3"
