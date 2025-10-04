@@ -1,0 +1,11 @@
+name: nasa2025
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - python-dotenv
+  - requests
+  - gunicorn
+  - pip:
+    - -r requirements.txt
