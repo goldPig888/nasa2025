@@ -1,6 +1,8 @@
 # nasa2025
 
 LINK TO TOOL: https://kaleidoscopes.streamlit.app/
+presentation slides: https://docs.google.com/presentation/d/1Kn9JDMExttVMjR9LDTc2REp61Q469MhfgetEK2aroRg/edit?usp=sharing
+
 
 ## Environment setup (macOS / zsh)
 
