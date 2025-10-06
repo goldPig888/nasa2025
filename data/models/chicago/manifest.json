@@ -1,0 +1,9 @@
+[
+  {
+    "city": "chicago",
+    "horizon": 1,
+    "forecast_steps": 7,
+    "history_signature": "466cbcfc11ba5704a31ef91458c5734b187b2f7b",
+    "path": "data/models/chicago/bundle_h1_s7.pkl"
+  }
+]
