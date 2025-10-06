@@ -1,4 +1,31 @@
-altair==5.5.0
+streamlit==1.26.0
+pandas==2.2.2
+numpy==1.26.4
+altair==5.2.1
+pydeck==0.8.0
+requests==2.31.0
+python-dotenv==1.0.0
+openai==1.10.0
+scikit-learn==1.3.2
+joblib==1.3.2
+protobuf==4.24.3
+geopy==2.4.0
+pyyaml==6.0
+jupyterlab==4.2.3
+psycopg2-binary==2.9.10
+flask==2.3.3
+pytest==7.4.2
+typing-extensions==4.7.1
+certifi==2024.9.1
+tzdata==2024.10
+
+# Optional / helpers
+selenium==4.11.2
+beautifulsoup4==4.12.2
+markdown==3.5.4
+
+# NOTE: These versions are a best-effort pin based on the project's needs. If you prefer an exact freeze,
+# run `conda run -n nasa2025 pip freeze > requirements.txt` locally and replace this file with the results.altair==5.5.0
 annotated-types==0.7.0
 anyio==4.11.0
 attrs @ file:///home/conda/feedstock_root/build_artifacts/attrs_1741918516150/work
