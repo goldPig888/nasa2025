@@ -10,7 +10,7 @@
     "city": "houston",
     "horizon": 1,
     "forecast_steps": 7,
-    "history_signature": "09eb4d55f17144a3963cadf8a44ee4fb82475278",
+    "history_signature": "339fd30fd40c366dc633469c18ae6103e4c954d5",
     "path": "data/models/houston/bundle_h1_s7.pkl"
   }
 ]
