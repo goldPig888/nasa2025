@@ -5,7 +5,6 @@ from __future__ import annotations
 import os
 from datetime import datetime
 from typing import Dict, List, Optional
-
 import requests
 
 
@@ -74,7 +73,7 @@ def fetch_pollen_forecast(
         )
         response.raise_for_status()
         data = response.json()
-        print("[pollen] Google response:", data)
+        # print("[pollen] Google response:", data)
         data["source"] = "google"
         return data
     except requests.RequestException as exc:
