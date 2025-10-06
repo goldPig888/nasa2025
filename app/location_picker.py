@@ -6,7 +6,7 @@ import pydeck as pdk
 import os
 import math
 from datetime import datetime
-from typing import Dict, Optional, Sequence
+from typing import Dict, Optional, Sequence, Union
 from dotenv import load_dotenv
 from streamlit.components.v1 import html as components_html
 import re
@@ -693,7 +693,7 @@ if selected_view == "Location Dashboard":
 
     station_df = pd.DataFrame(stations)
     station_layer_data = pd.DataFrame(columns=["lon", "lat", "tooltip", "radius", "color", "name"])
-    station_metrics: dict[str, dict[str, float | None]] = {}
+    station_metrics: Dict[str, Dict[str, Optional[float]]] = {}
     name_lookup: dict[str, str] = {}
     metric_cols = list(pollutant_cols)
 
@@ -830,7 +830,7 @@ if selected_view == "Location Dashboard":
     )
     highlight_station = selected_station_option if selected_station_option != "City average" else None
 
-    def resolve_payload(name: str) -> Dict[str, float | None]:
+    def resolve_payload(name: str) -> Dict[str, Optional[float]]:
         return station_metrics.get(name) or station_metrics.get(name_lookup.get(name, "")) or {}
 
     station_plot_records: list[dict[str, object]] = []
@@ -1060,14 +1060,14 @@ if selected_view == "Location Dashboard":
         st.markdown(legend_html, unsafe_allow_html=True)
         st.caption("\n\n".join(caption_lines))
 
-    def format_metrics(payload: dict[str, float | None]) -> str:
+    def format_metrics(payload: Dict[str, Optional[float]]) -> str:
         return " | ".join(
             f"{k.upper()}: {v:.1f}"
             for k, v in payload.items()
             if v is not None
         )
 
-    def spoon_for(payload: dict[str, float | None]) -> str:
+    def spoon_for(payload: Dict[str, Optional[float]]) -> str:
         return describe_spoon(
             pm25=payload.get("pm25"),
             pm10=payload.get("pm10"),
@@ -1244,7 +1244,7 @@ if selected_view == "Location Dashboard":
                     merra_hist = merra_hist[merra_hist["date"].notna()]
                 history_sources.append(merra_hist)
 
-            summary_records: list[dict[str, float | str]] = []
+            summary_records: list[dict[str, Union[float, str]]] = []
             if history_sources:
                 for poll in components_df["pollutant"].unique():
                     search_names = {
@@ -2130,9 +2130,9 @@ elif selected_view == "Social Media":
     def _build_social_post(
         initiative_name: str,
         city_name: str,
-        pollutant_payload: dict,
-        google_obs: object | None = None,
-        merra_frame: pd.DataFrame | None = None,
+        pollutant_payload: Dict[str, Optional[float]],
+        google_obs: Optional[object] = None,
+        merra_frame: Optional[pd.DataFrame] = None,
     ) -> str:
         """Format the exact message requested by the user.
 

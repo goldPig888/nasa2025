@@ -2,6 +2,7 @@
 import os, io, gzip, boto3, requests, pandas as pd
 import numpy as np
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from typing import Optional
 from botocore import UNSIGNED
 from botocore.client import Config
 from geopy.distance import distance
@@ -322,7 +323,7 @@ def fetch_city_openaq(
 
 
 def _merra_sample_dates(
-    openaq_daily: pd.DataFrame | None,
+    openaq_daily: Optional[pd.DataFrame],
     *,
     lookback_days: int = 75,
     span_days: int = 35,
@@ -367,7 +368,7 @@ def fetch_city_merra(
     city_name,
     lat,
     lon,
-    openaq_daily: pd.DataFrame | None = None,
+    openaq_daily: Optional[pd.DataFrame] = None,
     *,
     data_dir: str = "data",
     use_cache: bool = True,
